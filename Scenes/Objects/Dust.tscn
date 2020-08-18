@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Resources/Effects/dust.png" type="Texture" id=1]
+[ext_resource path="res://assets/Codes/Dust.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.0200893, 0.831288 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.634969 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.2
+emission_shape = 2
+emission_box_extents = Vector3( 1, 5, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 5.0
+gravity = Vector3( 0, -30, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 36.0
+scale = 0.5
+scale_curve = SubResource( 2 )
+
+[node name="Dust" type="Particles2D"]
+position = Vector2( -0.115982, -1.15982 )
+rotation = -1.5708
+emitting = false
+amount = 15
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 3 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Dust_timer" type="Timer" parent="."]
+[connection signal="timeout" from="Dust_timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Resources/Interface/life_bar_full.png" type="Texture" id=1]
+[ext_resource path="res://assets/Resources/Interface/score.png" type="Texture" id=2]
+[ext_resource path="res://assets/Resources/Interface/sword_mec.png" type="Texture" id=3]
+[ext_resource path="res://assets/Resources/Font/pixel_art/pixelart.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/Interface/Hud_gui.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="Interface" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stack" type="VBoxContainer" parent="."]
+margin_right = 428.0
+margin_bottom = 300.0
+
+[node name="bars" type="MarginContainer" parent="stack"]
+margin_right = 428.0
+margin_bottom = 17.0
+
+[node name="lifebarContainer" type="HBoxContainer" parent="stack/bars"]
+margin_right = 428.0
+margin_bottom = 17.0
+
+[node name="healthBar" type="TextureRect" parent="stack/bars/lifebarContainer"]
+margin_right = 51.0
+margin_bottom = 17.0
+texture = ExtResource( 1 )
+
+[node name="divider" type="MarginContainer" parent="stack"]
+margin_top = 21.0
+margin_right = 428.0
+margin_bottom = 251.0
+rect_min_size = Vector2( 0, 230 )
+
+[node name="scoresAndMecs" type="MarginContainer" parent="stack"]
+margin_top = 255.0
+margin_right = 428.0
+margin_bottom = 287.0
+size_flags_horizontal = 3
+
+[node name="scoreBox" type="HBoxContainer" parent="stack/scoresAndMecs"]
+margin_right = 428.0
+margin_bottom = 32.0
+
+[node name="score" type="HBoxContainer" parent="stack/scoresAndMecs/scoreBox"]
+margin_right = 56.0
+margin_bottom = 32.0
+
+[node name="score" type="TextureRect" parent="stack/scoresAndMecs/scoreBox/score"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="stack/scoresAndMecs/scoreBox/score"]
+margin_left = 36.0
+margin_top = 9.0
+margin_right = 56.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 1 )
+text = "99"
+
+[node name="divider" type="MarginContainer" parent="stack/scoresAndMecs/scoreBox"]
+margin_left = 60.0
+margin_right = 392.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="mechanicIcon" type="TextureRect" parent="stack/scoresAndMecs/scoreBox"]
+margin_left = 396.0
+margin_right = 428.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
